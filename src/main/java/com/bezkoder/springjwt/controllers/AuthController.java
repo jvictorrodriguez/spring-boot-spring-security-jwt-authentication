@@ -32,7 +32,8 @@ import com.bezkoder.springjwt.repository.UserRepository;
 import com.bezkoder.springjwt.security.jwt.JwtUtils;
 import com.bezkoder.springjwt.security.services.UserDetailsImpl;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+//@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin("http://127.0.0.1:5500/")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -52,6 +53,7 @@ public class AuthController {
   JwtUtils jwtUtils;
 
   @PostMapping("/signin")
+  @CrossOrigin("http://127.0.0.1:5500/")
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
     Authentication authentication = authenticationManager.authenticate(
